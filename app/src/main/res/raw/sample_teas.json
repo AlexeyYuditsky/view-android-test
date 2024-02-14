@@ -1,0 +1,13 @@
+{
+  "good_response": {
+    "result": false
+  },
+  "bad_response": {
+    "errorCode": 400,
+    "errorDescription": "Ошибка авторизации"
+  },
+  "CheckCargoSpace": {
+    "errorCode": 400,
+    "errorDescription": "Ошибка авторизации"
+  }
+}
