@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test
+package com.alexeyyuditsky.test.recycler
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.databinding.ItemCarBinding
 import com.alexeyyuditsky.test.databinding.RecyclerFragmentBinding
 

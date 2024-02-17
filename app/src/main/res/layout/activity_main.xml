@@ -4,34 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AAAAA"
-        app:layout_constraintBottom_toTopOf="@+id/openMainActivity2Button"
+        app:layout_constraintBottom_toTopOf="@+id/open_life_cycle_activity_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/openMainActivity2Button"
+        android:id="@+id/open_life_cycle_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open MainActivity2"
+        android:text="Open Lifecycle Activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/openRecyclerViewButton"
+        android:id="@+id/open_recycler_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Open recyclerView example"
+        android:text="Open Recycler Activity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openMainActivity2Button" />
+        app:layout_constraintTop_toBottomOf="@+id/open_life_cycle_activity_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

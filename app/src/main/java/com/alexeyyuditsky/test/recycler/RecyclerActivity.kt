@@ -1,9 +1,10 @@
-package com.alexeyyuditsky.test
+package com.alexeyyuditsky.test.recycler
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.alexeyyuditsky.test.R
 
-class MainActivity3 : AppCompatActivity(R.layout.activity_main3) {
+class RecyclerActivity : AppCompatActivity(R.layout.activity_recycler) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

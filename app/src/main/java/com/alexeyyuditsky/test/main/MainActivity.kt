@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test
+package com.alexeyyuditsky.test.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,10 @@ import android.os.Looper
 import android.os.ResultReceiver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.alexeyyuditsky.test.recycler.RecyclerActivity
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
+import com.alexeyyuditsky.test.lifecycle.LifeCycleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,23 +19,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
         log("MainActivity onCreate")
 
-        binding.openMainActivity2Button.setOnClickListener { onOpenMainActivity2ButtonPressed() }
-        binding.openRecyclerViewButton.setOnClickListener { onOpenRecyclerViewButtonPressed() }
+        setContentView(binding.root)
+
+        binding.openLifeCycleActivityButton.setOnClickListener { onOpenLifeCycleActivityButtonPressed() }
+        binding.openRecyclerActivityButton.setOnClickListener { onOpenRecyclerActivityButtonPressed() }
     }
 
-    private fun onOpenRecyclerViewButtonPressed() {
-        startActivity(Intent(this, MainActivity3::class.java))
+    private fun onOpenRecyclerActivityButtonPressed() {
+        startActivity(Intent(this, RecyclerActivity::class.java))
     }
 
-    private fun onOpenMainActivity2ButtonPressed() {
+    private fun onOpenLifeCycleActivityButtonPressed() {
         startActivity(
-            Intent(this, MainActivity2::class.java).apply {
+            Intent(this, LifeCycleActivity::class.java).apply {
                 putExtra("receiver", object : ResultReceiver(Handler(Looper.getMainLooper())) {
                     override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
                         super.onReceiveResult(resultCode, resultData)
+                        binding.textView.text = resultData?.getString("sample", "empty")
                     }
                 })
             })
@@ -41,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        log("MainViewModelHashCode: ${viewModel.hashCode()}")
         log("MainActivity onStart")
     }
 

@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test
+package com.alexeyyuditsky.test.lifecycle
 
 import android.content.Context
 import android.os.Bundle
@@ -8,19 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.log
-import com.alexeyyuditsky.test.databinding.Fragment1Binding
+import com.alexeyyuditsky.test.databinding.FragmentLifecycle1Binding
 
-class Fragment1 : Fragment(R.layout.fragment_1) {
+class LifeCycle1Fragment : Fragment(R.layout.fragment_lifecycle_1) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        log("fragment1 onAttach")
+        log("Fragment1LifeCycle onAttach")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        log("fragment1 onCreate")
+        log("Fragment1LifeCycle onCreate")
     }
 
     override fun onCreateView(
@@ -28,22 +29,22 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        log("fragment1 onCreateView")
+        log("Fragment1LifeCycle onCreateView")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        log("fragment1 onViewCreated")
-        val binding = Fragment1Binding.bind(view)
+        log("Fragment1LifeCycle onViewCreated")
+        val binding = FragmentLifecycle1Binding.bind(view)
 
         binding.textView.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(
                     R.id.container,
-                    Fragment2().apply {
+                    LifeCycle2Fragment().apply {
                         var str = ""
-                        repeat(45000) {
+                        repeat(45000) { // крайние значения перед переполнением бандла
                             str += "hello "
                         }
                         arguments = bundleOf("str" to str)
@@ -62,37 +63,37 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
 
     override fun onStart() {
         super.onStart()
-        log("fragment1 onStart")
+        log("Fragment1LifeCycle onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        log("fragment1 onResume")
+        log("Fragment1LifeCycle onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        log("fragment1 onPause")
+        log("Fragment1LifeCycle onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        log("fragment1 onStop")
+        log("Fragment1LifeCycle onStop")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        log("fragment1 onDestroyView")
+        log("Fragment1LifeCycle onDestroyView")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        log("fragment1 onDestroy")
+        log("Fragment1LifeCycle onDestroy")
     }
 
     override fun onDetach() {
         super.onDetach()
-        log("fragment1 onDetach")
+        log("Fragment1LifeCycle onDetach")
     }
 
 }
