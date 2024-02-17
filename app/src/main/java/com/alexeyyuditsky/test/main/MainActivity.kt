@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             Intent(this, LifeCycleActivity::class.java).apply {
                 putExtra("receiver", object : ResultReceiver(Handler(Looper.getMainLooper())) {
                     override fun onReceiveResult(resultCode: Int, resultData: Bundle?) {
-                        super.onReceiveResult(resultCode, resultData)
                         binding.textView.text = resultData?.getString("sample", "empty")
                     }
                 })
