@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +15,19 @@
     <Button
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
-        android:text="send"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="send" />
+
+    <Button
+        android:id="@+id/openBottomSheetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open bottom sheet" />
+
+    <Button
+        android:id="@+id/openCalendarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open calendar" />
 
 </LinearLayout>

@@ -29,8 +29,8 @@
         android:id="@+id/open_recycler_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         android:text="Open Recycler Activity"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/open_life_cycle_activity_button" />
 

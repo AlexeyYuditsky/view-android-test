@@ -1,6 +1,23 @@
 <resources>
+    <string-array name="months">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+
     <string name="app_name">Test</string>
     <string name="pref_notification_key">notification key</string>
     <string name="pref_notification_title">notification title</string>
     <string name="pref_notification_summary">notification summary</string>
+    <string name="cancel">Отменить</string>
+    <string name="select">Выбрать</string>
 </resources>

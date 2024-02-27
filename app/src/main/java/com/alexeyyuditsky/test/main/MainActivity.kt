@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         log("MainViewModelHashCode: ${viewModel.hashCode()}")
         log("MainActivity onStart")
+
     }
 
     override fun onResume() {

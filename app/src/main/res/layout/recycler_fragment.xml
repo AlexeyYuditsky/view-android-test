@@ -13,6 +13,16 @@
         tools:itemCount="10"
         tools:listitem="@layout/item_car" />
 
+    <TextView
+        android:id="@+id/fpsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:textColor="#4CAF50"
+        android:textSize="30sp"
+        tools:text="50" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/clearListButton"
         android:layout_width="wrap_content"

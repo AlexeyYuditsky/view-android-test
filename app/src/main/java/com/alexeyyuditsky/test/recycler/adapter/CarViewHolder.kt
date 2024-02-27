@@ -14,11 +14,11 @@ abstract class CarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding: ItemCarBinding
     ) : CarViewHolder(binding.root) {
 
-        override fun bind(item: CarUi) {
+        override fun bind(item: CarUi) = with(binding) {
             val car = item as CarUi.Base
-            binding.nameTextView.text = car.name
-            binding.hpTextView.text = car.hp
-            binding.speedTextView.text = car.speed
+            nameTextView.text = car.name
+            hpTextView.text = car.hp
+            speedTextView.text = car.speed
         }
     }
 
