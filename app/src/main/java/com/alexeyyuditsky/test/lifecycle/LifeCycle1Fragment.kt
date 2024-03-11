@@ -44,7 +44,7 @@ class LifeCycle1Fragment : Fragment(R.layout.fragment_lifecycle_1) {
         binding.textView.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(
-                    R.id.container,
+                    R.id.fragmentContainer,
                     LifeCycle2Fragment().apply {
                         var str = ""
                         repeat(45000) { // крайние значения перед переполнением бандла
@@ -79,7 +79,6 @@ class LifeCycle1Fragment : Fragment(R.layout.fragment_lifecycle_1) {
             ).show()
         }
 
-        CalendarDialogFragment().show(parentFragmentManager, null)
         binding.openCalendarButton.setOnClickListener {
             CalendarDialogFragment().show(parentFragmentManager, null)
         }

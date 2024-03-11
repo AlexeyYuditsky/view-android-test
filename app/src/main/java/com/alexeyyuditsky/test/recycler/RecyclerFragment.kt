@@ -1,40 +1,29 @@
 package com.alexeyyuditsky.test.recycler
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.View
-import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.alexeyyuditsky.test.R
-import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.RecyclerFragmentBinding
+import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.recycler.adapter.CarAdapter
 import com.alexeyyuditsky.test.recycler.animator.CustomAnimator
 import com.alexeyyuditsky.test.recycler.model.CarUi
-import com.gu.toolargetool.BuildConfig
-import kotlin.math.roundToInt
 
-class RecyclerFragment : Fragment(R.layout.recycler_fragment), FPSCounter.Listener {
+class RecyclerFragment : AbstractFragment<RecyclerFragmentBinding>(R.layout.recycler_fragment) {
 
-    private var _binding: RecyclerFragmentBinding? = null
-    private val binding get() = _binding!!
+    override fun bind(view: View): RecyclerFragmentBinding = RecyclerFragmentBinding.bind(view)
+
+    private val viewModel by viewModels<FpsViewModel>()
 
     private val adapter = CarAdapter()
 
     private var isHasData = false
 
-    private val fpsCounter = FPSCounter(this)
-
-    override fun onFPSUpdate(fps: Double) {
-        val value = "%.0f".format(fps)
-        binding.fpsTextView.text = value
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = RecyclerFragmentBinding.bind(view)
 
         with(binding) {
             recyclerView.adapter = adapter
@@ -47,7 +36,9 @@ class RecyclerFragment : Fragment(R.layout.recycler_fragment), FPSCounter.Listen
             clearListButton.setOnClickListener { onClearListButtonPressed() }
             deleteButton.setOnClickListener { onDeleteButtonPressed() }
 
-            fpsCounter.start()
+            viewModel.fpsLiveData.observe(viewLifecycleOwner) {
+                fpsTextView.text = it
+            }
         }
     }
 
@@ -56,12 +47,6 @@ class RecyclerFragment : Fragment(R.layout.recycler_fragment), FPSCounter.Listen
     private fun onClearListButtonPressed() {
         adapter.update(if (isHasData) carList else emptyList)
         isHasData = !isHasData
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        fpsCounter.stop()
-        _binding = null
     }
 
     companion object {

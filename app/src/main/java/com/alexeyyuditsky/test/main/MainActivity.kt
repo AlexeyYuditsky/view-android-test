@@ -7,6 +7,7 @@ import android.os.Looper
 import android.os.ResultReceiver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.alexeyyuditsky.test.animation.AnimationActivity
 import com.alexeyyuditsky.test.recycler.RecyclerActivity
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.openLifeCycleActivityButton.setOnClickListener { onOpenLifeCycleActivityButtonPressed() }
         binding.openRecyclerActivityButton.setOnClickListener { onOpenRecyclerActivityButtonPressed() }
+        binding.openAnimationActivityButton.setOnClickListener { onOpenAnimationActivityButtonPressed() }
+    }
+
+    private fun onOpenAnimationActivityButtonPressed() {
+        startActivity(Intent(this, AnimationActivity::class.java))
     }
 
     private fun onOpenRecyclerActivityButtonPressed() {

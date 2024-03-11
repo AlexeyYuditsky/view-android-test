@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.log
-import com.alexeyyuditsky.test.databinding.ActivityLifecycleBinding
+import com.alexeyyuditsky.test.databinding.ActivityContainerBinding
 
 class LifeCycleActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityLifecycleBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityContainerBinding.inflate(layoutInflater) }
     private val viewModel by viewModels<LifeCycleActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class LifeCycleActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, LifeCycle1Fragment())
+                .replace(R.id.fragmentContainer, LifeCycle1Fragment())
                 .commit()
         }
     }

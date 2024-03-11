@@ -1,29 +1,21 @@
 package com.alexeyyuditsky.test.lifecycle
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.alexeyyuditsky.test.R
+import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.core.log
+import com.alexeyyuditsky.test.databinding.FragmentLifecycle2Binding
 
-@SuppressLint("ResourceType")
-abstract class AbstractFragment(@IdRes idLayout: Int) : Fragment(idLayout) {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        log("ABSTRACT Fragment2LifeCycle onViewCreated")
-    }
-}
-
-@SuppressLint("ResourceType")
-class LifeCycle2Fragment : AbstractFragment(R.layout.fragment_lifecycle_2) {
+class LifeCycle2Fragment : AbstractFragment<FragmentLifecycle2Binding>(R.layout.fragment_lifecycle_2) {
 
     private val viewModel by viewModels<LifeCycleFragment2ViewModel>()
+
+    override fun bind(view:View): FragmentLifecycle2Binding = FragmentLifecycle2Binding.bind(view)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
