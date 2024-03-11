@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.log
-import com.alexeyyuditsky.test.databinding.CalendarBinding
 import com.alexeyyuditsky.test.databinding.FragmentLifecycle1Binding
 import com.alexeyyuditsky.test.lifecycle.bottomSheet.FirstBottomSheetDialog
+import com.alexeyyuditsky.test.lifecycle.calendar.CalendarDialogFragment
 
 class LifeCycle1Fragment : Fragment(R.layout.fragment_lifecycle_1) {
 
@@ -69,29 +68,21 @@ class LifeCycle1Fragment : Fragment(R.layout.fragment_lifecycle_1) {
             dialog.show(parentFragmentManager, null)
         }
 
-        parentFragmentManager.setFragmentResultListener("key", viewLifecycleOwner) { _, result ->
-            Toast.makeText(requireContext(), result.getString("date"), Toast.LENGTH_SHORT).show()
+        parentFragmentManager.setFragmentResultListener(
+            CalendarDialogFragment.REQUEST_KEY,
+            viewLifecycleOwner
+        ) { _, result ->
+            Toast.makeText(
+                requireContext(),
+                result.getString(CalendarDialogFragment.ARG_DATE),
+                Toast.LENGTH_SHORT
+            ).show()
         }
-        showCalendarDialog()
+
+        CalendarDialogFragment().show(parentFragmentManager, null)
         binding.openCalendarButton.setOnClickListener {
-            showCalendarDialog()
+            CalendarDialogFragment().show(parentFragmentManager, null)
         }
-    }
-
-    private fun showCalendarDialog() {
-        val binding = CalendarBinding.inflate(layoutInflater)
-
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(binding.root)
-            .create()
-
-        binding.calendarView.selectButton { date: String ->
-            parentFragmentManager.setFragmentResult("key", bundleOf("date" to date))
-            dialog.dismiss()
-        }
-        binding.calendarView.cancelButton { dialog.dismiss() }
-
-        dialog.show()
     }
 
     override fun onStart() {

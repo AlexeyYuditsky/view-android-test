@@ -3,22 +3,9 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="LifeCycleActivity">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\1\.android\avd\Pixel_6a_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-27T08:03:40.430885100Z" />
-        </State>
+        <State />
       </entry>
-      <entry key="RecyclerActivity">
+      <entry key="MainActivity">
         <State />
       </entry>
       <entry key="app">

@@ -8,12 +8,12 @@
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <ImageButton
-        android:id="@+id/arrowBackMonthImageView"
+        android:id="@+id/arrowPrevMonthImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_back"
+        android:src="@drawable/ic_arrow_prev"
         app:layout_constraintBottom_toBottomOf="@id/spinner"
         app:layout_constraintEnd_toStartOf="@id/spinner"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -27,18 +27,18 @@
         android:layout_height="48dp"
         android:dropDownWidth="160dp"
         android:dropDownVerticalOffset="48dp"
-        app:layout_constraintEnd_toStartOf="@id/arrowForwardMonthImageView"
-        app:layout_constraintStart_toEndOf="@+id/arrowBackMonthImageView"
+        app:layout_constraintEnd_toStartOf="@id/arrowNextMonthImageView"
+        app:layout_constraintStart_toEndOf="@+id/arrowPrevMonthImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/arrowForwardMonthImageView"
+        android:id="@+id/arrowNextMonthImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_forward"
+        android:src="@drawable/ic_arrow_next"
         app:layout_constraintBottom_toBottomOf="@+id/spinner"
         app:layout_constraintEnd_toStartOf="@+id/spaceTop"
         app:layout_constraintStart_toEndOf="@+id/spinner"
@@ -56,12 +56,12 @@
         app:layout_constraintTop_toTopOf="@+id/spinner" />
 
     <ImageButton
-        android:id="@+id/arrowBackYearImageView"
+        android:id="@+id/arrowPrevYearImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_back"
+        android:src="@drawable/ic_arrow_prev"
         app:layout_constraintBottom_toBottomOf="@+id/spinner"
         app:layout_constraintEnd_toStartOf="@id/yearTextView"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -76,19 +76,19 @@
         android:layout_height="36dp"
         android:fontFamily="@font/formular_medium"
         android:gravity="center"
-        android:text="2024"
         app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintEnd_toStartOf="@+id/arrowForwardYearImageView"
-        app:layout_constraintStart_toEndOf="@id/arrowBackYearImageView"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintEnd_toStartOf="@+id/arrowNextYearImageView"
+        app:layout_constraintStart_toEndOf="@id/arrowPrevYearImageView"
+        app:layout_constraintTop_toTopOf="@+id/spinner"
+        tools:text="2024" />
 
     <ImageButton
-        android:id="@+id/arrowForwardYearImageView"
+        android:id="@+id/arrowNextYearImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_forward"
+        android:src="@drawable/ic_arrow_next"
         app:layout_constraintBottom_toBottomOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/yearTextView"

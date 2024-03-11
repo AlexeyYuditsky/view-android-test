@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.lifecycle.calendar
+package com.alexeyyuditsky.test.lifecycle.calendar.adapter
 
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.databinding.ItemDateBinding
+import com.alexeyyuditsky.test.lifecycle.calendar.model.Day
 
 class DateViewHolder(
     private val binding: ItemDateBinding,
@@ -13,15 +14,15 @@ class DateViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {
-        itemView.setOnClickListener { listener.onItemClick(layoutPosition) }
+        itemView.setOnClickListener { listener.onDateItemClick(layoutPosition) }
     }
 
-    fun bind(date: Date) {
-        binding.dateTextView.text = date.value
+    fun bind(day: Day) {
+        binding.dateTextView.text = day.name
         when {
-            date.isSelected -> setViewSettings(R.drawable.round_orange, R.color.white)
-            date.isAdditional -> setViewSettings(R.drawable.rectangle_white, R.color.light_grey)
-            else -> setViewSettings(R.drawable.rectangle_white, R.color.black)
+            day.isSelected -> setViewSettings(R.drawable.round_orange, R.color.white)
+            day.isAdditional -> setViewSettings(R.drawable.round_white, R.color.light_grey)
+            else -> setViewSettings(R.drawable.round_white, R.color.black)
         }
     }
 
