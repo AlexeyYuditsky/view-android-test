@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:ordering="sequentially">
+
+    <!-- Анимация перемещения вправо и вниз -->
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="translationX"
+        android:valueTo="200" />
+
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="translationY"
+        android:valueTo="200" />
+
+    <!-- Анимация вращения -->
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="rotation"
+        android:valueTo="360" />
+
+    <!-- Анимация масштабирования -->
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="scaleX"
+        android:valueTo="2" />
+
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="scaleY"
+        android:valueTo="2" />
+
+    <!-- Анимация изменения цвета -->
+    <objectAnimator
+        android:duration="1000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="backgroundColor"
+        android:valueTo="#FF4081" />
+
+</set>

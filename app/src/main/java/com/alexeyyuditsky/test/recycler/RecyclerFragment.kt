@@ -6,15 +6,15 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.alexeyyuditsky.test.R
-import com.alexeyyuditsky.test.databinding.RecyclerFragmentBinding
 import com.alexeyyuditsky.test.core.AbstractFragment
+import com.alexeyyuditsky.test.databinding.FragmentRecyclerBinding
 import com.alexeyyuditsky.test.recycler.adapter.CarAdapter
 import com.alexeyyuditsky.test.recycler.animator.CustomAnimator
 import com.alexeyyuditsky.test.recycler.model.CarUi
 
-class RecyclerFragment : AbstractFragment<RecyclerFragmentBinding>(R.layout.recycler_fragment) {
+class RecyclerFragment : AbstractFragment<FragmentRecyclerBinding>(R.layout.fragment_recycler) {
 
-    override fun bind(view: View): RecyclerFragmentBinding = RecyclerFragmentBinding.bind(view)
+    override fun bind(view: View): FragmentRecyclerBinding = FragmentRecyclerBinding.bind(view)
 
     private val viewModel by viewModels<FpsViewModel>()
 
