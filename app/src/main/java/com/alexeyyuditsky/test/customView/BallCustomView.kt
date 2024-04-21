@@ -17,9 +17,7 @@ class BallCustomView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr, defStyleRes) {
 
     private val density = resources.displayMetrics.density
-    private val paint = Paint().apply {
-        color = Color.RED
-    }
+    private val paint = Paint().apply { color = Color.RED }
 
     init {
         Timer().scheduleAtFixedRate(
