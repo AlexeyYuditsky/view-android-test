@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.customView
+package com.alexeyyuditsky.test.customView.ball
 
 import android.content.Context
 import android.graphics.Canvas
@@ -9,7 +9,7 @@ import android.view.View
 import java.util.Timer
 import kotlin.concurrent.scheduleAtFixedRate
 
-class BallCustomView @JvmOverloads constructor(
+class BallView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
