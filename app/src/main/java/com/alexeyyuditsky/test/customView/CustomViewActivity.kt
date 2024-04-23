@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.customView.ball.BallViewFragment
+import com.alexeyyuditsky.test.customView.drawCircle.DrawCircleViewFragment
 import com.alexeyyuditsky.test.customView.pyramid.PyramidViewFragment
 import com.alexeyyuditsky.test.databinding.ActivityCustomViewBinding
 
@@ -24,6 +25,12 @@ class CustomViewActivity : AppCompatActivity() {
         binding.pyramidView.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, PyramidViewFragment())
+                .commit()
+        }
+
+        binding.circleView.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, DrawCircleViewFragment())
                 .commit()
         }
     }
