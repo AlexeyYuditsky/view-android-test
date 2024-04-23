@@ -14,12 +14,12 @@ class PyramidView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : View(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val basePaint = Paint().apply {
+    private val bottomPaint = Paint().apply {
         color = Color.GREEN
         strokeWidth = 12f
     }
 
-    private val peekPaint = Paint().apply {
+    private val topPaint = Paint().apply {
         color = Color.RED
         strokeWidth = 12f
     }
@@ -28,22 +28,22 @@ class PyramidView @JvmOverloads constructor(
         super.onDraw(canvas)
 
         val leftX = 0.1f * width
-        val leftY = 0.85f * height
+        val leftY = 0.8f * height
 
         val rightX = 0.9f * width
-        val rightY = 0.85f * height
+        val rightY = 0.8f * height
 
         val bottomX = 0.45f * width
-        val bottomY = 0.95f * height
+        val bottomY = 0.9f * height
 
         val topX = 0.5f * width
         val topY = 0.1f * height
 
-        canvas.drawLine(leftX, leftY, rightX, rightY, basePaint)
-        canvas.drawLine(leftX, leftY, bottomX, bottomY, basePaint)
-        canvas.drawLine(rightX, rightY, bottomX, bottomY, basePaint)
-        canvas.drawLine(leftX, leftY, topX, topY, peekPaint)
-        canvas.drawLine(rightX, rightY, topX, topY, peekPaint)
-        canvas.drawLine(bottomX, bottomY, topX, topY, peekPaint)
+        canvas.drawLine(leftX, leftY, rightX, rightY, bottomPaint)
+        canvas.drawLine(leftX, leftY, bottomX, bottomY, bottomPaint)
+        canvas.drawLine(rightX, rightY, bottomX, bottomY, bottomPaint)
+        canvas.drawLine(leftX, leftY, topX, topY, topPaint)
+        canvas.drawLine(rightX, rightY, topX, topY, topPaint)
+        canvas.drawLine(bottomX, bottomY, topX, topY, topPaint)
     }
 }
