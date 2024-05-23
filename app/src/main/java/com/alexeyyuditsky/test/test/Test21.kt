@@ -5,38 +5,28 @@ data class Organization(
     val selectedTextIndexes: Pair<Int, Int> = 0 to 0
 )
 
-fun findMatchIndices(text: String, query: String): Pair<Int, Int> {
-    var currentIndex = 0
+private fun findMatchIndices(organization: Organization, query: CharSequence): Pair<Int, Int> {
+    val name = organization.name
+    val index = name.indexOf(query.toString(), ignoreCase = true)
 
-    text.split(" ").forEach { word ->
-        // Проверяем, если слово начинается с query
-        if (word.startsWith(query, true)) {
-            val startIndex = currentIndex
-            val endIndex = currentIndex + query.length - 1
-            return Pair(startIndex, endIndex)
-        }
-        // Обновляем текущий индекс для следующего слова
-        currentIndex += word.length + 1 // +1 для учета пробела между словами
+    return if (index != -1) {
+        Pair(index, index + query.length)
+    } else {
+        Pair(0, 0)
     }
-
-    return Pair(0, 0)
 }
 
+
 fun main() {
-    val organizations =
-        listOf(Organization("ип иванов"), Organization("ИП янде"), Organization("Яндекс маркет"), Organization("мар янд"))
+    val organizations = listOf(
+        Organization("ян ян"),
+        Organization("ИП янде"),
+        Organization("Яндекс маркет"),
+        Organization("ИП Яковлев")
+    )
 
-    val result = organizations.map {
-        val selectedTextIndexes = findMatchIndices(it.name, "янд")
-        if (selectedTextIndexes == Pair(0, 0)) it
-        else it.copy(selectedTextIndexes = selectedTextIndexes)
-    }
+    val res = organizations.map { findMatchIndices(it, "мар") }
+    println(res)
 
-    val nonZeroSecond = result.filter { it.selectedTextIndexes.second != 0 }.sortedBy { it.selectedTextIndexes.first }
-    val zeroSecond = result.filter { it.selectedTextIndexes.second == 0 }
-
-    // Объединяем отфильтрованные и отсортированные списки
-    val result2 = nonZeroSecond + zeroSecond
-
-    println(result2.map { it.selectedTextIndexes })
+    // [(0, 5), (0, 0), (0, 0), (0, 0)]
 }
