@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#CCFFF5">
 
-    <com.alexeyyuditsky.test.customView.circleDiagram.CircleDiagramView
+    <com.alexeyyuditsky.test.screen.customView.circleDiagram.CircleDiagramView
         android:layout_width="200dp"
         android:id="@+id/circeDiagramView"
         android:layout_height="200dp"

@@ -5,7 +5,7 @@
     android:layout_marginHorizontal="32dp"
     android:background="@drawable/calendar_background">
 
-    <com.alexeyyuditsky.test.lifecycle.calendar.view.CalendarView
+    <com.alexeyyuditsky.test.screen.lifecycle.calendar.view.CalendarView
         android:id="@+id/calendarView"
         android:padding="16dp"
         android:layout_width="match_parent"

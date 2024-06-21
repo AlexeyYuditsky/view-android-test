@@ -7,12 +7,13 @@ import android.os.Looper
 import android.os.ResultReceiver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.alexeyyuditsky.test.animation.AnimationActivity
-import com.alexeyyuditsky.test.recycler.RecyclerActivity
+import com.alexeyyuditsky.test.screen.animation.AnimationActivity
+import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
 import com.alexeyyuditsky.test.core.log
-import com.alexeyyuditsky.test.customView.CustomViewActivity
+import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
-import com.alexeyyuditsky.test.lifecycle.LifeCycleActivity
+import com.alexeyyuditsky.test.screen.flow.FlowActivity
+import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +26,17 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.openLifeCycleActivityButton.setOnClickListener { onOpenLifeCycleActivityButtonPressed() }
-        binding.openRecyclerActivityButton.setOnClickListener { onOpenRecyclerActivityButtonPressed() }
-        binding.openAnimationActivityButton.setOnClickListener { onOpenAnimationActivityButtonPressed() }
-        binding.openCustomViewActivityButton.setOnClickListener { onOpenCustomViewActivityButtonPressed() }
+        with(binding) {
+            openLifeCycleActivityButton.setOnClickListener { onOpenLifeCycleActivityButtonPressed() }
+            openRecyclerActivityButton.setOnClickListener { onOpenRecyclerActivityButtonPressed() }
+            openAnimationActivityButton.setOnClickListener { onOpenAnimationActivityButtonPressed() }
+            openCustomViewActivityButton.setOnClickListener { onOpenCustomViewActivityButtonPressed() }
+            openFlowActivityButton.setOnClickListener { onOpenFlowActivityButtonPressed() }
+        }
+    }
+
+    private fun onOpenFlowActivityButtonPressed() {
+        startActivity(Intent(this, FlowActivity::class.java))
     }
 
     private fun onOpenCustomViewActivityButtonPressed() {

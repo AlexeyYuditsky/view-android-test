@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#CCFFF5">
 
-    <com.alexeyyuditsky.test.customView.ball.BallView
+    <com.alexeyyuditsky.test.screen.customView.ball.BallView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@color/white"

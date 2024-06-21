@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#CCFFF5">
 
-    <com.alexeyyuditsky.test.customView.pyramid.PyramidView
+    <com.alexeyyuditsky.test.screen.customView.pyramid.PyramidView
         android:id="@+id/pyramidView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
