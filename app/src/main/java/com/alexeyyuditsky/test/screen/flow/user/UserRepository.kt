@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.screen.flow
+package com.alexeyyuditsky.test.screen.flow.user
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.screen.flow
+package com.alexeyyuditsky.test.screen.flow.user
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class FlowViewModel : ViewModel() {
+class UserViewModel : ViewModel() {
 
     private val repository = UserRepository()
 
