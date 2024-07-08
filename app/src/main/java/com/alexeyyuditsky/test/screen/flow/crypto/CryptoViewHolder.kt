@@ -1,6 +1,7 @@
 package com.alexeyyuditsky.test.screen.flow.crypto
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.databinding.ItemCryptoBinding
 
 class CryptoViewHolder(
@@ -9,7 +10,7 @@ class CryptoViewHolder(
 
     fun bind(currency: Currency) = with(binding) {
         name.text = currency.name
-        value.text = currency.value
+        price.text = itemView.context.getString(R.string.currencyPrice, currency.price)
     }
 
 }

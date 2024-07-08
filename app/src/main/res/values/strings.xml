@@ -5,4 +5,5 @@
     <string name="pref_notification_summary">notification summary</string>
     <string name="cancel">Отменить</string>
     <string name="select">Выбрать</string>
+    <string name="currencyPrice">$%1$d</string>
 </resources>
