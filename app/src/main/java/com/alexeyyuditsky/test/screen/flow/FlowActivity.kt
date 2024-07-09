@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.screen.flow.main
+package com.alexeyyuditsky.test.screen.flow
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

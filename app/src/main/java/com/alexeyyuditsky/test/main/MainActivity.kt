@@ -12,7 +12,7 @@ import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
-import com.alexeyyuditsky.test.screen.flow.main.FlowActivity
+import com.alexeyyuditsky.test.screen.flow.FlowActivity
 import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
 
 class MainActivity : AppCompatActivity() {
