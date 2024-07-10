@@ -14,5 +14,4 @@ class FlowActivity : AppCompatActivity(R.layout.activity_container) {
                 .commit()
         }
     }
-
 }
