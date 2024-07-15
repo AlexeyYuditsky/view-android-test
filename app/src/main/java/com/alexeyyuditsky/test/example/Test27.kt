@@ -1,14 +1,15 @@
 package com.alexeyyuditsky.test.example
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-
-suspend fun main() {
-    test().collect { println(it) }
+class MyClass {
+    var a = 5
+        set(value) {
+            println("hello")
+            field = value
+        }
 }
 
-fun test(): Flow<Int> = flow {
-    repeat(10) {
-        emit(it)
-    }
+fun main() {
+    val myClass = MyClass()
+    println(myClass.a)
+
 }
