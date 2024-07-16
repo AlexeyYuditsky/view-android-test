@@ -20,7 +20,6 @@ class CryptoRepository {
         emit(currencyList.toList())
 
         refreshEvents.collect {
-            log("refresh collect")
             delay(1500)
             generateCurrentList()
             emit(currencyList.toList())

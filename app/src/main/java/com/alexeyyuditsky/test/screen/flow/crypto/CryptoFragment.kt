@@ -9,7 +9,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
-import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.FragmentCryptoBinding
 import kotlinx.coroutines.launch
 
@@ -34,13 +33,11 @@ class CryptoFragment : AbstractFragment<FragmentCryptoBinding>(R.layout.fragment
             .collect {
                 when (it) {
                     is State.Loading -> {
-                        log("Loading")
-                        binding.progress.isVisible = true
                         binding.refreshButton.isVisible = false
+                        binding.progress.isVisible = true
                     }
 
                     is State.Content -> {
-                        log("Content")
                         binding.progress.isVisible = false
                         binding.refreshButton.isVisible = true
                         adapter.submitList(it.currencyList)
