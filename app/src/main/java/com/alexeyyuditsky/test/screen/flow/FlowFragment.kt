@@ -6,6 +6,7 @@ import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.databinding.FragmentChangeScreenBinding
 import com.alexeyyuditsky.test.screen.flow.crypto.CryptoFragment
+import com.alexeyyuditsky.test.screen.flow.game.TeamScoreFragment
 import com.alexeyyuditsky.test.screen.flow.user.UsersFragment
 
 class FlowFragment :
@@ -26,6 +27,13 @@ class FlowFragment :
         binding.cryptoButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, CryptoFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        binding.teamScoreButton.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, TeamScoreFragment())
                 .addToBackStack(null)
                 .commit()
         }

@@ -12,7 +12,6 @@
         android:text="users"
         app:layout_constraintBottom_toTopOf="@+id/cryptoButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -23,9 +22,18 @@
         android:layout_height="wrap_content"
         android:text="crypto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@id/teamScoreButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usersButton" />
+
+    <Button
+        android:id="@+id/teamScoreButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="team score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cryptoButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
