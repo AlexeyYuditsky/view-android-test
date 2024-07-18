@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.databinding.FragmentTeamScoreBinding
+import kotlinx.coroutines.launch
 
 class TeamScoreFragment : AbstractFragment<FragmentTeamScoreBinding>(R.layout.fragment_team_score) {
 
@@ -16,10 +20,29 @@ class TeamScoreFragment : AbstractFragment<FragmentTeamScoreBinding>(R.layout.fr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.teamOneLogoTextView.setOnClickListener { viewModel.increaseScore(Team.TEAM_1) }
-        binding.teamTwoLogoTextView.setOnClickListener { viewModel.increaseScore(Team.TEAM_2) }
+        binding.teamOneLogoTextView.setOnClickListener { viewModel.increaseTeamOneScore() }
+        binding.teamTwoLogoTextView.setOnClickListener { viewModel.increaseTeamTwoScore() }
 
-        viewModel.state.observe(viewLifecycleOwner) {
+        lifecycleScope.launch {
+            viewModel.state
+                .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .collect {
+                    when (it) {
+                        is TeamScoreState.Game -> {
+                            binding.teamOneScoreTextView.text = it.score1.toString()
+                            binding.teamTwoScoreTextView.text = it.score2.toString()
+                        }
+
+                        is TeamScoreState.Winner -> {
+                            binding.teamOneScoreTextView.text = it.score1.toString()
+                            binding.teamTwoScoreTextView.text = it.score2.toString()
+                            Toast.makeText(context, "Winner ${it.winnerTeam}", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+        }
+
+        /*viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
                 is TeamScoreState.Game -> {
                     binding.teamOneScoreTextView.text = it.score1.toString()
@@ -32,7 +55,7 @@ class TeamScoreFragment : AbstractFragment<FragmentTeamScoreBinding>(R.layout.fr
                     Toast.makeText(context, "Winner ${it.winnerTeam}", Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        }*/
     }
 
 }

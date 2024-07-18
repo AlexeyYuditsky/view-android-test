@@ -59,13 +59,14 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation ("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 
-    implementation ("com.gu.android:toolargetool:0.3.0")
+    implementation("com.gu.android:toolargetool:0.3.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
