@@ -36,26 +36,15 @@ class TeamScoreFragment : AbstractFragment<FragmentTeamScoreBinding>(R.layout.fr
                         is TeamScoreState.Winner -> {
                             binding.teamOneScoreTextView.text = it.score1.toString()
                             binding.teamTwoScoreTextView.text = it.score2.toString()
-                            Toast.makeText(context, "Winner ${it.winnerTeam}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                context,
+                                "Winner ${it.winnerTeam}",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 }
         }
-
-        /*viewModel.state.observe(viewLifecycleOwner) {
-            when (it) {
-                is TeamScoreState.Game -> {
-                    binding.teamOneScoreTextView.text = it.score1.toString()
-                    binding.teamTwoScoreTextView.text = it.score2.toString()
-                }
-
-                is TeamScoreState.Winner -> {
-                    binding.teamOneScoreTextView.text = it.score1.toString()
-                    binding.teamTwoScoreTextView.text = it.score2.toString()
-                    Toast.makeText(context, "Winner ${it.winnerTeam}", Toast.LENGTH_LONG).show()
-                }
-            }
-        }*/
     }
 
 }
