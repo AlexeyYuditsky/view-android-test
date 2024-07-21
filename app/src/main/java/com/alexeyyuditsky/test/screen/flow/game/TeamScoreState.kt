@@ -8,7 +8,6 @@ sealed interface TeamScoreState {
     ) : TeamScoreState
 
     data class Winner(
-        val winnerTeam: Team,
         val score1: Int,
         val score2: Int
     ) : TeamScoreState
