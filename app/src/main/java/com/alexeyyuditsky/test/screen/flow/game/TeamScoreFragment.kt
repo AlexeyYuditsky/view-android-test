@@ -5,8 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.databinding.FragmentTeamScoreBinding
@@ -25,8 +25,8 @@ class TeamScoreFragment :
         binding.teamTwoLogoTextView.setOnClickListener { viewModel.increaseTeamTwoScore() }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.state.collect {
+            viewModel.state.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .collect {
                     when (it) {
                         is TeamScoreState.Game -> {
                             binding.teamOneScoreTextView.text = it.score1.toString()
@@ -39,17 +39,13 @@ class TeamScoreFragment :
                         }
                     }
                 }
-            }
-
-
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.action.collect { uiAction ->
+            viewModel.action.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .collect { uiAction ->
                     uiAction.apply(this@TeamScoreFragment)
                 }
-            }
         }
     }
 
