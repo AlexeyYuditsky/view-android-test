@@ -1,19 +1,26 @@
 package com.alexeyyuditsky.test.main
 
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.ResultReceiver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.alexeyyuditsky.test.screen.animation.AnimationActivity
-import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
+import androidx.core.app.NotificationCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentFactory
 import com.alexeyyuditsky.test.core.log
-import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
+import com.alexeyyuditsky.test.screen.animation.AnimationActivity
+import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.screen.flow.FlowActivity
+import com.alexeyyuditsky.test.screen.flow.FlowFragment
 import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
+import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +40,12 @@ class MainActivity : AppCompatActivity() {
             openCustomViewActivityButton.setOnClickListener { onOpenCustomViewActivityButtonPressed() }
             openFlowActivityButton.setOnClickListener { onOpenFlowActivityButtonPressed() }
         }
+
+        val intent = Intent()
+        val intent2 = intent.clone()
+
+        log(intent.hashCode(), "555")
+        log(intent2.hashCode(), "555")
     }
 
     private fun onOpenFlowActivityButtonPressed() {
