@@ -81,6 +81,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }
 
 fun test() {

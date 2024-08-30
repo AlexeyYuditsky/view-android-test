@@ -25,5 +25,5 @@ object AlarmHelper {
     }
 }
 
-class A
+open class A
 class B
