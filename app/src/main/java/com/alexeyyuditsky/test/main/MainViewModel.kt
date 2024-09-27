@@ -2,12 +2,10 @@ package com.alexeyyuditsky.test.main
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.alexeyyuditsky.test.core.log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
 
 class MainViewModel(
     private val savedStateHandle: SavedStateHandle
@@ -17,7 +15,7 @@ class MainViewModel(
 
     init {
         log("MainViewModel created")
-        viewModelScope
+        viewModelScope2
     }
 
     fun saveState() {
