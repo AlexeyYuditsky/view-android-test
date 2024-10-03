@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 public abstract class Main {
 
     public static void main(String[] args) {
+       // AAA.Companion.getTest();
        // System.out.println(new Three("s").getStr());
     }
 
