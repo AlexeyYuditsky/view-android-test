@@ -1,15 +1,17 @@
 package com.alexeyyuditsky.test.example
 
-import kotlin.system.measureTimeMillis
+import java.util.concurrent.Semaphore
 
 var counter2 = 0
-val lock = Any()
+val semaphore = Semaphore(2)
 
 fun increment() {
-    synchronized(lock) {
-        counter2++
+    try {
+        semaphore.acquire()
+        println("Value: ${++counter2}, Thread: ${Thread.currentThread().name}")
+    } finally {
+        semaphore.release()
     }
-    println("Counter incremented to $counter2 by ${Thread.currentThread().name}")
 }
 
 fun main() {
@@ -21,11 +23,8 @@ fun main() {
         }
     }
 
-    val time = measureTimeMillis {
-        threads.forEach { it.start() }
-        threads.forEach { it.join() }
-    }
-    println(time)
+    threads.forEach { it.start() }
+    threads.forEach { it.join() }
 
     println("Final counter value: $counter2")
 }
