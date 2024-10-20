@@ -1,13 +1,14 @@
 package com.alexeyyuditsky.test.example.concurrency
 
-open class Widget {
+import kotlin.concurrent.thread
+
+abstract class Widget {
     override fun toString(): String {
         return "Widget"
     }
 
-    @Synchronized
     open fun doSmth() {
-        println(toString())
+        println(toString() + Thread.currentThread().name)
     }
 }
 
@@ -18,12 +19,18 @@ class LoggingWidget : Widget() {
 
     @Synchronized
     override fun doSmth() {
-        println(toString())
+        println(toString() + Thread.currentThread().name)
         super.doSmth()
     }
 }
 
 fun main() {
     val logging = LoggingWidget()
-    logging.doSmth()
+
+    for (index in 0 until 100000) {
+        thread {
+            logging.doSmth()
+        }
+    }
+
 }
