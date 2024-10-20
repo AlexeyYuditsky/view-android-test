@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.example;
+package com.alexeyyuditsky.test.example.java;
 
 public class ListenerManager {
 

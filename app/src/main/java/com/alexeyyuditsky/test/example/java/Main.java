@@ -1,6 +1,4 @@
-package com.alexeyyuditsky.test.example;
-
-import androidx.annotation.NonNull;
+package com.alexeyyuditsky.test.example.java;
 
 public abstract class Main {
 

@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.example
+package com.alexeyyuditsky.test.example.concurrency
 
 import kotlin.concurrent.thread
 

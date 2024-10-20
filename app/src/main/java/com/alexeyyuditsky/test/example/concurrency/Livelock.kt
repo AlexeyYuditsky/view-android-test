@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.example
+package com.alexeyyuditsky.test.example.concurrency
 
 class Livelock {
     private var thread1Active = true
