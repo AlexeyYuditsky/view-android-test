@@ -75,11 +75,15 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        log("MainActivity onRestart")
+    }
+
     override fun onStart() {
         super.onStart()
         log("MainViewModelHashCode: ${viewModel.hashCode()}")
         log("MainActivity onStart")
-
     }
 
     override fun onResume() {
