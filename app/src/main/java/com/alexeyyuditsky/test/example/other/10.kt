@@ -1,11 +1,14 @@
 package com.alexeyyuditsky.test.example.other
 
-import kotlinx.coroutines.SupervisorJob
-
-fun main() {
-
+interface Printer {
+    fun print()
+    class Base : Printer { override fun print() = println("BASE") }
+    class Test : Printer { override fun print() = println("TEST") }
 }
 
-interface A {
+class Document : Printer by Printer.Test()
 
+fun main() {
+    val doc = Document()
+    doc.print() // TEST
 }
