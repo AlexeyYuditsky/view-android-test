@@ -44,6 +44,10 @@ class BallView @JvmOverloads constructor(
 
     private val speed = 30
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
