@@ -1,14 +1,20 @@
 package com.alexeyyuditsky.test.example.other.systemDesign.oneTask
 
-fun main()  {
-    val device = BleDevice.Base()
-    val commandExecutor = CommandExecutorImpl(device)
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-    repeat(10) { screen ->
-        commandExecutor.requestAsync("battery_status") { response ->
-            println("Screen $screen received: $response")
+fun main() = runBlocking {
+    val device = BleDevice.Base()
+    val commandExecutor = CommandExecutorImpl(device, this)
+
+    val jobs = List(10) {
+        launch {
+            commandExecutor.requestAsync("battery_status") { response ->
+                println("Screen $it received: $response")
+            }
         }
     }
 
-    Thread.sleep(2000)
+    jobs.joinAll()
 }
