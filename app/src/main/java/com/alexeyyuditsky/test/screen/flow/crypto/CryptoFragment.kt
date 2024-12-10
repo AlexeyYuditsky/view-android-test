@@ -9,7 +9,10 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
+import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.FragmentCryptoBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class CryptoFragment : AbstractFragment<FragmentCryptoBinding>(R.layout.fragment_crypto) {
@@ -28,22 +31,25 @@ class CryptoFragment : AbstractFragment<FragmentCryptoBinding>(R.layout.fragment
         observeViewModel()
     }
 
-    private fun observeViewModel() = lifecycleScope.launch {
-        viewModel.state.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
-            .collect {
-                when (it) {
-                    is State.Loading -> {
-                        binding.refreshButton.isVisible = false
-                        binding.progress.isVisible = true
-                    }
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            viewModel.state.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    when (it) {
+                        is State.Loading -> {
+                            binding.refreshButton.isVisible = false
+                            binding.progress.isVisible = true
+                        }
 
-                    is State.Content -> {
-                        binding.progress.isVisible = false
-                        binding.refreshButton.isVisible = true
-                        adapter.submitList(it.currencyList)
+                        is State.Content -> {
+                            binding.progress.isVisible = false
+                            binding.refreshButton.isVisible = true
+                            adapter.submitList(it.currencyList)
+                        }
                     }
                 }
-            }
+                log("какой-то код не вызовется")
+        }
     }
 
 }
