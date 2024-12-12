@@ -3,7 +3,9 @@ package com.alexeyyuditsky.test.core
 import android.app.Activity
 import android.app.Application
 import android.app.Application.ActivityLifecycleCallbacks
+import android.content.Context
 import android.os.Bundle
+import android.os.Trace
 import com.gu.toolargetool.TooLargeTool
 
 interface LifeCycleCallback : ActivityLifecycleCallbacks {
@@ -17,7 +19,12 @@ interface LifeCycleCallback : ActivityLifecycleCallbacks {
 
 class App : Application(), LifeCycleCallback {
 
+    init {
+        log("Application INIT", "a")
+    }
+
     override fun onCreate() {
+        log("Application onCreate", "a")
         super.onCreate()
         TooLargeTool.startLogging(this)
         registerActivityLifecycleCallbacks(this)

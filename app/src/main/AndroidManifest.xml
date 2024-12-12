@@ -46,6 +46,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name=".core.StartupLogger"
+            android:authorities="com.example.startuplogger"
+            android:exported="false" />
+
     </application>
+
+    <instrumentation
+        android:name=".CustomInstrumentation"
+        android:targetPackage="your.package.name" />
 
 </manifest>

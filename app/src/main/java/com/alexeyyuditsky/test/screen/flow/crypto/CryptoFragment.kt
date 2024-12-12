@@ -2,6 +2,7 @@ package com.alexeyyuditsky.test.screen.flow.crypto
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,8 +12,6 @@ import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.FragmentCryptoBinding
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class CryptoFragment : AbstractFragment<FragmentCryptoBinding>(R.layout.fragment_crypto) {
@@ -26,7 +25,9 @@ class CryptoFragment : AbstractFragment<FragmentCryptoBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.itemAnimator = null
-        binding.refreshButton.setOnClickListener { viewModel.refreshCrypto() }
+        binding.refreshButton.setOnClickListener {
+
+        }
 
         observeViewModel()
     }

@@ -9,6 +9,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
+import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.FragmentTeamScoreBinding
 import kotlinx.coroutines.launch
 
@@ -20,36 +21,20 @@ class TeamScoreFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.teamOneLogoTextView.setOnClickListener { viewModel.increaseTeamOneScore() }
-        binding.teamTwoLogoTextView.setOnClickListener { viewModel.increaseTeamTwoScore() }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.state.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
-                .collect {
-                    when (it) {
-                        is TeamScoreState.Game -> {
-                            binding.teamOneScoreTextView.text = it.score1.toString()
-                            binding.teamTwoScoreTextView.text = it.score2.toString()
-                        }
-
-                        is TeamScoreState.Winner -> {
-                            binding.teamOneScoreTextView.text = it.score1.toString()
-                            binding.teamTwoScoreTextView.text = it.score2.toString()
-                        }
-                    }
-                }
+        view.viewTreeObserver.addOnPreDrawListener {
+            log("FINISH DRAW", "a")
+            true
         }
+    }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.action.flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
-                .collect { uiAction ->
-                    uiAction.apply(this@TeamScoreFragment)
-                }
-        }
+    override fun onResume() {
+        super.onResume()
+        log("onResume", "a")
     }
 
     override fun showWinner(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+
+
 }

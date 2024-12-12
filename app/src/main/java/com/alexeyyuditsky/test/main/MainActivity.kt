@@ -1,24 +1,17 @@
 package com.alexeyyuditsky.test.main
 
-import android.content.Context
 import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.ResultReceiver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentFactory
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.ActivityMainBinding
 import com.alexeyyuditsky.test.screen.animation.AnimationActivity
 import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.screen.flow.FlowActivity
-import com.alexeyyuditsky.test.screen.flow.FlowFragment
 import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
 import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
 
@@ -88,7 +81,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        log("END")
         log("MainActivity onResume")
+        log("onResume", "a")
     }
 
     override fun onPause() {
@@ -114,5 +109,10 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         log("MainActivity onSaveInstanceState")
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        log("onPostResume", "a")
     }
 }
