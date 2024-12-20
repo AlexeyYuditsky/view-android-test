@@ -11,6 +11,7 @@ import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.core.log
 import com.alexeyyuditsky.test.databinding.FragmentTeamScoreBinding
+import com.alexeyyuditsky.test.screen.flow.FlowFragment.Companion.logMemoryDetails
 import kotlinx.coroutines.launch
 
 class TeamScoreFragment :
@@ -19,22 +20,29 @@ class TeamScoreFragment :
     private val viewModel by viewModels<TeamScoreViewModel>()
     override fun bind(view: View) = FragmentTeamScoreBinding.bind(view)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        log("TeamScoreFragment created at ${System.currentTimeMillis()}", "flow")
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        log("onViewCreated start at ${System.currentTimeMillis()}", "flow")
         view.viewTreeObserver.addOnPreDrawListener {
-            log("FINISH DRAW", "a")
+            log("UI finished drawing at ${System.currentTimeMillis()}", "flow")
+            logMemoryDetails(requireContext().applicationContext)
             true
         }
+        log("onViewCreated end at ${System.currentTimeMillis()}", "flow")
     }
 
     override fun onResume() {
         super.onResume()
-        log("onResume", "a")
+        log("onResume called at ${System.currentTimeMillis()}", "flow")
     }
 
     override fun showWinner(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
-
 
 }
