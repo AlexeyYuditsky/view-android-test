@@ -14,6 +14,7 @@ import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.screen.flow.FlowActivity
 import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
 import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
+import com.alexeyyuditsky.test.screen.services.ServiceActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             openAnimationActivityButton.setOnClickListener { onOpenAnimationActivityButtonPressed() }
             openCustomViewActivityButton.setOnClickListener { onOpenCustomViewActivityButtonPressed() }
             openFlowActivityButton.setOnClickListener { onOpenFlowActivityButtonPressed() }
+            openServiceActivityButton.setOnClickListener { onOpenServiceActivityButtonPressed() }
         }
 
         val intent = Intent()
@@ -39,6 +41,10 @@ class MainActivity : AppCompatActivity() {
 
         log(intent.hashCode(), "555")
         log(intent2.hashCode(), "555")
+    }
+
+    private fun onOpenServiceActivityButtonPressed() {
+        startActivity(Intent(this, ServiceActivity::class.java))
     }
 
     private fun onOpenFlowActivityButtonPressed() {

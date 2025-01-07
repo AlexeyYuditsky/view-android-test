@@ -61,4 +61,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openCustomViewActivityButton" />
 
+    <Button
+        android:id="@+id/openServiceActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Service Activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openFlowActivityButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
