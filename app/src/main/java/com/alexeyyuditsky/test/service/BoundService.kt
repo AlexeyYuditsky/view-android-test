@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -18,17 +19,17 @@ class BoundService : Service() {
     private val coroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private val binder = LocalBinder()
 
+    val liveData = MutableLiveData<String>()
+
     inner class LocalBinder : Binder() {
         fun getService(): BoundService = this@BoundService
     }
 
-    fun performBackgroundTask(callback: (String) -> Unit) {
+    fun performBackgroundTask() {
         coroutineScope.launch {
             repeat(10) { index ->
                 val result = longRunningTask(index + 1)
-                withContext(Dispatchers.Main) {
-                    callback(result)
-                }
+                withContext(Dispatchers.Main) { liveData.value = result }
             }
         }
     }

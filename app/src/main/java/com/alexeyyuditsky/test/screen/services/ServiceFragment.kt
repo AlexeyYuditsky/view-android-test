@@ -6,6 +6,7 @@ import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import com.alexeyyuditsky.test.R
 import com.alexeyyuditsky.test.core.AbstractFragment
 import com.alexeyyuditsky.test.databinding.FragmentServiceBinding
@@ -36,9 +37,9 @@ class ServiceFragment :
             if (!isBound) {
                 requireContext().bindService(boundIntent, this, Context.BIND_AUTO_CREATE)
                 isBound = true
-                boundService?.performBackgroundTask(::updateTittleTextView)
+                boundService?.performBackgroundTask()
             }
-            boundService?.performBackgroundTask(::updateTittleTextView)
+            boundService?.performBackgroundTask()
         }
 
         binding.titleTextView.setOnClickListener {
@@ -47,6 +48,7 @@ class ServiceFragment :
                 isBound = false
             }
         }
+
     }
 
     fun updateTittleTextView(title: String) {
@@ -56,6 +58,7 @@ class ServiceFragment :
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         boundService = (service as BoundService.LocalBinder).getService()
         isBound = true
+        boundService?.liveData?.observe(viewLifecycleOwner, ::updateTittleTextView)
     }
 
     override fun onServiceDisconnected(name: ComponentName?) {
