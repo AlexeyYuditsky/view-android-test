@@ -1,10 +1,10 @@
-package com.alexeyyuditsky.test.example.other
+package com.alexeyyuditsky.test.example.task
 
 import org.junit.Assert.*
 
 import org.junit.Test
 
-class Test29 {
+class Test1 {
 
     @Test
     fun test_function() {

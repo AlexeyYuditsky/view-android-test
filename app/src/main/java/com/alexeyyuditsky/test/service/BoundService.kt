@@ -34,6 +34,11 @@ class BoundService : Service() {
         }
     }
 
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        println("boundService: onStartCommand")
+        return super.onStartCommand(intent, flags, startId)
+    }
+
     private suspend fun longRunningTask(progress: Int): String {
         delay(500)
         return progress.toString()
