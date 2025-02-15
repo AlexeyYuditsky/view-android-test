@@ -1,23 +1,14 @@
 package com.alexeyyuditsky.test.example.other
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+class C(val test: Int)
+data class D(val test: Int)
 
-suspend fun main() {
-    val job = CoroutineScope(Dispatchers.IO).launch {
-        println("start")
-        delay(1000)
-        withContext(NonCancellable) {
-            println("withContext")
-            println("end")
-        }
-        println("end2")
-    }
+fun main() {
+    val c1 = C(0)
+    val c2 = C(0)
+    println(c1 == c2)
 
-    job.cancel()
-    Thread.sleep(2000)
+    val d1 = D(0)
+    val d2 = D(0)
+    println(d1 == d2)
 }

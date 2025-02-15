@@ -61,7 +61,7 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
 
     implementation("androidx.test.uiautomator:uiautomator:2.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
@@ -78,13 +78,15 @@ dependencies {
 
     implementation("com.gu.android:toolargetool:0.3.0")
 
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.work:work-runtime-ktx:2.10.0")
 
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("junit:junit:4.13.2")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
+    implementation ("com.github.tomakehurst:wiremock-jre8-standalone:2.35.1")
 }
 
 fun test() {
