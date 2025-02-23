@@ -3,10 +3,9 @@ package com.alexeyyuditsky.test.core
 import android.app.Activity
 import android.app.Application
 import android.app.Application.ActivityLifecycleCallbacks
-import android.content.Context
 import android.os.Bundle
-import android.os.Trace
 import com.gu.toolargetool.TooLargeTool
+import dagger.hilt.android.HiltAndroidApp
 
 interface LifeCycleCallback : ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) = Unit
@@ -17,6 +16,7 @@ interface LifeCycleCallback : ActivityLifecycleCallbacks {
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) = Unit
 }
 
+@HiltAndroidApp
 class App : Application(), LifeCycleCallback {
 
     init {

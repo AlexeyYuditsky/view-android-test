@@ -12,20 +12,23 @@ import com.alexeyyuditsky.test.databinding.ActivityMainBinding
 import com.alexeyyuditsky.test.screen.animation.AnimationActivity
 import com.alexeyyuditsky.test.screen.customView.CustomViewActivity
 import com.alexeyyuditsky.test.screen.flow.FlowActivity
+import com.alexeyyuditsky.test.screen.graphql.ui.GraphQLActivity
 import com.alexeyyuditsky.test.screen.lifecycle.LifeCycleActivity
 import com.alexeyyuditsky.test.screen.recycler.RecyclerActivity
 import com.alexeyyuditsky.test.screen.services.ServiceActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        log("MainActivity onCreate")
-
         setContentView(binding.root)
+
+        log("MainActivity onCreate")
 
         with(binding) {
             openLifeCycleActivityButton.setOnClickListener { onOpenLifeCycleActivityButtonPressed() }
@@ -34,13 +37,12 @@ class MainActivity : AppCompatActivity() {
             openCustomViewActivityButton.setOnClickListener { onOpenCustomViewActivityButtonPressed() }
             openFlowActivityButton.setOnClickListener { onOpenFlowActivityButtonPressed() }
             openServiceActivityButton.setOnClickListener { onOpenServiceActivityButtonPressed() }
+            openGraphQLActivityButton.setOnClickListener { onOpenGraphQLActivityButtonPressed() }
         }
+    }
 
-        val intent = Intent()
-        val intent2 = intent.clone()
-
-        log(intent.hashCode(), "555")
-        log(intent2.hashCode(), "555")
+    private fun onOpenGraphQLActivityButtonPressed() {
+        startActivity(Intent(this, GraphQLActivity::class.java))
     }
 
     private fun onOpenServiceActivityButtonPressed() {

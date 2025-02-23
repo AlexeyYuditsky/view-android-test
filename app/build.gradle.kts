@@ -5,6 +5,14 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
+    id("com.apollographql.apollo") version "4.1.1"
+    id ("com.google.dagger.hilt.android")
+}
+
+apollo {
+    service("service") {
+        packageName.set("com.alexeyyuditsky")
+    }
 }
 
 android {
@@ -72,11 +80,11 @@ dependencies {
 
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
-    implementation("com.gu.android:toolargetool:0.3.0")
+    implementation("com.gu.android:toolargetool:0.3.2")
 
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.work:work-runtime-ktx:2.10.0")
@@ -84,9 +92,14 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("junit:junit:4.13.2")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
 
-    implementation ("com.github.tomakehurst:wiremock-jre8-standalone:2.35.1")
+    implementation ("com.github.tomakehurst:wiremock-jre8-standalone:3.0.1")
+
+    implementation("com.apollographql.apollo:apollo-runtime:4.1.1")
+
+    implementation ("com.google.dagger:hilt-android:2.51.1")
+    ksp ("com.google.dagger:hilt-compiler:2.51.1")
 }
 
 fun test() {
