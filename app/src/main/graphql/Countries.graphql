@@ -3,6 +3,6 @@ query Countries {
         code
         name
         capital
-        emojiU
+        emoji
     }
 }

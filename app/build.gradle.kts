@@ -7,6 +7,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.apollographql.apollo") version "4.1.1"
     id ("com.google.dagger.hilt.android")
+    id ("kotlin-parcelize")
 }
 
 apollo {
