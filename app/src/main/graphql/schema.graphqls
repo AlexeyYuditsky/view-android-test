@@ -1,3 +1,12 @@
+type Query {
+    continent(code: ID!): Continent
+    continents(filter: ContinentFilterInput = {}): [Continent!]!
+    countries(filter: CountryFilterInput = {}): [Country!]!
+    country(code: ID!): Country
+    language(code: ID!): Language
+    languages(filter: LanguageFilterInput = {}): [Language!]!
+}
+
 type Continent {
     code: ID!
     countries: [Country!]!
@@ -42,15 +51,6 @@ type Language {
 
 input LanguageFilterInput {
     code: StringQueryOperatorInput
-}
-
-type Query {
-    continent(code: ID!): Continent
-    continents(filter: ContinentFilterInput = {}): [Continent!]!
-    countries(filter: CountryFilterInput = {}): [Country!]!
-    country(code: ID!): Country
-    language(code: ID!): Language
-    languages(filter: LanguageFilterInput = {}): [Language!]!
 }
 
 type State {
