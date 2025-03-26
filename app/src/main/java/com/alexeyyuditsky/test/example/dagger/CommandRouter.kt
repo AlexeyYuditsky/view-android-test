@@ -1,6 +1,8 @@
 package com.alexeyyuditsky.test.example.dagger
 
-class CommandRouter {
+import javax.inject.Inject
+
+class CommandRouter @Inject constructor() {
 
     private val commands = emptyMap<String, Command>()
 
