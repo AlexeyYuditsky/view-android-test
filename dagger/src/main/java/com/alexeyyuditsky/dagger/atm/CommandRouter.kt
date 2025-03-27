@@ -1,10 +1,14 @@
-package com.alexeyyuditsky.test.example.dagger
+package com.alexeyyuditsky.dagger.atm
 
 import javax.inject.Inject
 
-class CommandRouter @Inject constructor() {
+class CommandRouter @Inject constructor(
+    command: Command
+) {
 
-    private val commands = emptyMap<String, Command>()
+    private val commands = mapOf<String, Command>(
+        command.key to command
+    )
 
     fun route(input: String): Command.Result {
         val splitInput = split(input)
@@ -15,7 +19,7 @@ class CommandRouter @Inject constructor() {
         return command.handleInput(args)
             .takeIf { it.status != Command.Status.INVALID }
             ?: invalidCommand(input)
-    }   
+    }
 
     private fun invalidCommand(input: String): Command.Result {
         println("couldn't understand \"$input\". please try again.")

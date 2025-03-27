@@ -1,4 +1,4 @@
-package com.alexeyyuditsky.test.example.dagger
+package com.alexeyyuditsky.dagger.atm
 
 import java.util.Scanner
 
@@ -11,5 +11,6 @@ fun main() {
     while (scanner.hasNextLine()) {
         val line = scanner.nextLine()
         val result = commandRouter.route(line)
+        println("Result: ${result.status}")
     }
 }
