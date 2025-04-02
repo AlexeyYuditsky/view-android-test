@@ -1,14 +1,10 @@
-package com.alexeyyuditsky.dagger.atm
+package com.alexeyyuditsky.dagger.atm.core
 
 import javax.inject.Inject
 
 class CommandRouter @Inject constructor(
-    command: Command
+    private val commands: Map<String, Command>
 ) {
-
-    private val commands = mapOf<String, Command>(
-        command.key to command
-    )
 
     fun route(input: String): Command.Result {
         val splitInput = split(input)

@@ -1,5 +1,6 @@
-package com.alexeyyuditsky.dagger.atm
+package com.alexeyyuditsky.dagger.atm.main
 
+import com.alexeyyuditsky.dagger.atm.di.DaggerCommandRouterFactory
 import java.util.Scanner
 
 fun main() {
