@@ -9,8 +9,6 @@ class SystemOutModule {
 
     @Provides
     fun textOutputter(): Outputter =
-        Outputter { s: String ->
-            println(s)
-        }
+        Outputter { s: String -> println(s) }
 
 }
