@@ -1,6 +1,6 @@
 package com.alexeyyuditsky.dagger.atm.di
 
-import com.alexeyyuditsky.dagger.atm.core.CommandRouter
+import com.alexeyyuditsky.dagger.atm.core.CommandProcessor
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,12 +9,12 @@ import javax.inject.Singleton
     modules = [
         LoginCommandModule::class,
         HelloWorldCommandModule::class,
+        UserCommandsModule::class,
         SystemOutModule::class,
-        UserCommandsModule::class
     ]
 )
-interface CommandRouterFactory {
+interface CommandProcessorFactory {
 
-    fun route(): CommandRouter
+    fun commandProcessor(): CommandProcessor
 
 }

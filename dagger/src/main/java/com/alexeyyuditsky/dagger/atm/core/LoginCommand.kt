@@ -7,11 +7,11 @@ class LoginCommand @Inject constructor(
     private val database: Database
 ) : Command {
 
-    override fun handleInput(input: List<String>): Command.Result {
-        val username = input.firstOrNull() ?: return Command.Result.invalid()
+    override fun handleInput(input: List<String>): Result {
+        val username = input.firstOrNull() ?: return Result.invalid()
         val account = database.getAccount(username)
         outputter.output("$username is logged in with balance: ${account.balance}" )
-        return Command.Result.handled()
+        return Result.handled()
     }
 
 }

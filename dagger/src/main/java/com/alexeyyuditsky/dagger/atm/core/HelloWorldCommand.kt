@@ -6,12 +6,12 @@ class HelloWorldCommand @Inject constructor(
     private val outputter: Outputter
 ) : Command {
 
-    override fun handleInput(input: List<String>): Command.Result =
+    override fun handleInput(input: List<String>): Result =
         if (input.isEmpty()) {
             outputter.output("world!")
-            Command.Result.handled()
+            Result.handled()
         } else {
-            Command.Result.invalid()
+            Result.invalid()
         }
 
 }

@@ -7,16 +7,16 @@ class DepositCommand @Inject constructor(
     private val database: Database
 ) : Command {
 
-    override fun handleInput(input: List<String>): Command.Result {
+    override fun handleInput(input: List<String>): Result {
         if (input.size != 2)
-            return Command.Result.invalid()
+            return Result.invalid()
         val username = input.first()
         val account = database.getAccount(username)
         val deposit = input[1].toLongOrNull()
-            ?: return Command.Result.invalid()
+            ?: return Result.invalid()
         account.deposit(deposit)
         outputter.output("$username is logged in with balance: ${account.balance}")
-        return Command.Result.handled()
+        return Result.handled()
     }
 
 }
