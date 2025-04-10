@@ -3,7 +3,7 @@ package com.alexeyyuditsky.dagger.atm.core
 import javax.inject.Inject
 
 class CommandRouter @Inject constructor(
-    private val commands: Map<String, Command>
+    private val commands: Map<@JvmSuppressWildcards String, @JvmSuppressWildcards Command>
 ) {
 
     fun route(input: String): Result {
