@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.alexeyyuditsky.dagger"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.alexeyyuditsky.dagger"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -45,6 +45,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
-    implementation("com.google.dagger:dagger:2.51.1")
-    ksp("com.google.dagger:dagger-compiler:2.51.1")
+    implementation("com.google.dagger:dagger:2.56.1")
+    ksp("com.google.dagger:dagger-compiler:2.56.1")
 }
