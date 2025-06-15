@@ -11,10 +11,9 @@ import javax.inject.Singleton
         HelloWorldCommandModule::class,
         UserCommandsModule::class,
         SystemOutModule::class,
+        UserCommandsRouter.InstallationModule::class
     ]
 )
 interface CommandProcessorFactory {
-
     fun commandProcessor(): CommandProcessor
-
 }
